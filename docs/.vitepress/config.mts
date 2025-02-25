@@ -22,6 +22,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/getting-started'},
+      { text: 'Discover', link: '/discover'},
       { text: 'Modules', items: [
           { text: 'x/gov', link: '/modules/gov'},
           { text: 'x/photon', link: '/modules/photon'},
@@ -34,7 +35,11 @@ export default defineConfig({
       '/modules/photon': generateSidebar('docs/modules/photon'),
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/atomone-hub' }
+      { icon: 'x', link: 'https://x.com/_atomone'},
+      { icon: 'github', link: 'https://github.com/atomone-hub' },
+      { icon: 'discord', link: 'https://discord.com/invite/atomone'},
+      { icon: 'youtube', link: 'https://www.youtube.com/@AtomOneHub'},
+      { icon: 'reddit', link: 'https://www.reddit.com/r/atomone/'}
     ],
     logo: '/logo.svg',
   },

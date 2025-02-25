@@ -1,0 +1,23 @@
+{
+  "name": "atomone-docs",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fast-glob": "^3.3.3",
+    "gray-matter": "^4.0.3",
+    "vitepress": "^1.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "markdown-it-mathjax3": "^4.3.2",
+    "vue": "^3.5.13"
+  }
+}

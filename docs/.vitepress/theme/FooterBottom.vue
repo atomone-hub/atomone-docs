@@ -1,6 +1,4 @@
-
 <style>
-
 .footer {
     display: flex;
     justify-items: center;
@@ -11,13 +9,14 @@
     font-size: 12px;
     color: #9ba2a9;
     padding: 6em 9em;
+    background: var(--vp-c-bg);
+    border-top: 1px solid var(--vp-c-bg-alt);
+    z-index: 99;
 }
 
 .footer a {
     color: white;
 }
-
-
 </style>
 
 

@@ -22,7 +22,6 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/getting-started'},
-      { text: 'Discover', link: '/discover'},
       { text: 'Modules', items: [
           { text: 'x/gov', link: '/modules/gov'},
           { text: 'x/photon', link: '/modules/photon'},

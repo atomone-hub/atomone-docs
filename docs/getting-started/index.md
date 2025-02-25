@@ -34,6 +34,8 @@ While we do not currently have any tutorials to cover this, maybe consider writi
 
 AtomOne is available for Leap and Keplr wallets.
 
+If you're looking for endpoints, check out the validator info [here](https://github.com/atomone-hub/atomone-validator-community/pulls).
+
 ## 4. Documentation and Writing
 
 Not all contributions are code-related! Writing clear, comprehensive documentation, tutorials, and guides is crucial to make AtomOne more accessible to new users and developers.

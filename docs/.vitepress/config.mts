@@ -23,8 +23,8 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/getting-started'},
       { text: 'Modules', items: [
-          { text: 'GOV Module', link: '/modules/gov'},
-          { text: 'PHOTON Module', link: '/modules/photon'},
+          { text: 'x/gov', link: '/modules/gov'},
+          { text: 'x/photon', link: '/modules/photon'},
         ] 
       }
     ],

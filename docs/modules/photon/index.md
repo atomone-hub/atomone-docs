@@ -20,7 +20,7 @@ brevity.
 
 ## Context
 
-The PHOTON token is specified in the [AtomOne Constitution Article 3 Section 5]:
+The PHOTON token is specified in the [AtomOne Constitution Article 3 Section 5](https://github.com/atomone-hub/genesis/blob/b84df30364674c3f68b4bc0a43d7ed977ae22226/CONSTITUTION.md#section-5-the-photon-token):
 
 > ### Section 5: The PHOTON Token
 >

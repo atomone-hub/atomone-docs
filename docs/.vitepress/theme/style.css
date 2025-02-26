@@ -181,6 +181,8 @@
   --vp-c-link-hover: #2E8A99;
 
   --vp-button-alt-bg: #2D2D3D;
+
+  --vp-c-gutter: var(--vp-c-bg-soft)
 }
 
 body {

@@ -5,6 +5,8 @@
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
  */
 
+
+
 /**
  * Colors
  *
@@ -50,6 +52,7 @@
   --vp-c-default-2: var(--vp-c-gray-2);
   --vp-c-default-3: var(--vp-c-gray-3);
   --vp-c-default-soft: var(--vp-c-gray-soft);
+  --vp-c-text: #d7d7e0 !important;
 
   --vp-c-brand-1: #A2A2A9;
   --vp-c-brand-2: #A2A2A9;
@@ -195,6 +198,10 @@ body {
 }
 
 
+.VPMenu {
+  background-color: var(--vp-c-bg) !important;
+}
+
 .VPSidebar {
   background-color: var(--vp-c-bg) !important;
   border-right: 1px solid var(--vp-c-bg-soft);
@@ -210,4 +217,13 @@ body {
 
 .sidebar a:hover {
   color: var(--vp-c-link);
+}
+
+.divider-line {
+  background-color: var(--vp-c-bg-soft) !important;
+}
+
+.VPImage {
+  max-width: 250px !important;
+  max-height: 250px !important;
 }

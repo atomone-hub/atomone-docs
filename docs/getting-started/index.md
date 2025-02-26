@@ -1,7 +1,6 @@
 ---
 outline: deep
 order: 99
-footer: true
 ---
 
 # Overview

@@ -22,6 +22,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/getting-started'},
+      { text: 'Architecture', link: '/architecture' },
       { text: 'Modules', items: [
           { text: 'x/gov', link: '/modules/gov'},
           { text: 'x/photon', link: '/modules/photon'},
@@ -30,6 +31,7 @@ export default defineConfig({
     ],
     sidebar: {
       '/getting-started': generateSidebar('docs/getting-started'),
+      '/architecture': generateSidebar('docs/architecture'),
       '/modules/gov': generateSidebar('docs/modules/gov'),
       '/modules/photon': generateSidebar('docs/modules/photon'),
     },

@@ -9,7 +9,7 @@ function getTitle(content: string): string | undefined {
         return undefined;
     }
 
-    return match[1]
+    return match[1].replaceAll('`', '')
 }
 
 /**

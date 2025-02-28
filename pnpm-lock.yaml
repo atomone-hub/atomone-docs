@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      fast-glob:
-        specifier: ^3.3.3
-        version: 3.3.3
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
@@ -21,6 +18,9 @@ importers:
       '@types/node':
         specifier: ^22.13.5
         version: 22.13.5
+      fast-glob:
+        specifier: ^3.3.3
+        version: 3.3.3
       markdown-it-mathjax3:
         specifier: ^4.3.2
         version: 4.3.2

@@ -13,7 +13,10 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
   markdown: {
-    math: true
+    math: true,
+    languageAlias: {
+      'golang': 'go'
+    }
   },
   themeConfig: {
     search: {
@@ -23,17 +26,12 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/getting-started'},
       { text: 'Architecture', link: '/architecture' },
-      { text: 'Modules', items: [
-          { text: 'x/gov', link: '/modules/gov'},
-          { text: 'x/photon', link: '/modules/photon'},
-        ] 
-      }
+      { text: 'Modules', link: '/modules' },
     ],
     sidebar: {
       '/getting-started': generateSidebar('docs/getting-started'),
       '/architecture': generateSidebar('docs/architecture'),
-      '/modules/gov': generateSidebar('docs/modules/gov'),
-      '/modules/photon': generateSidebar('docs/modules/photon'),
+      '/modules': generateSidebar('docs/modules'),
     },
     socialLinks: [
       { icon: 'x', link: 'https://x.com/_atomone'},

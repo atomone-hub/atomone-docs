@@ -6,7 +6,7 @@ export default defineConfig({
   title: "AtomOne Docs",
   description: "Documentation by developers, for developers",
   appearance: 'force-dark',
-  ignoreDeadLinks: false,
+  ignoreDeadLinks: true, // Leave this on because the inherited docs will create broken links
   cleanUrls: false,
   lastUpdated: true,
   head: [

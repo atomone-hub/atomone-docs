@@ -43,16 +43,19 @@ function purge(modules: string[]) {
 async function start() {
   const packageJsonPath = path.join(process.cwd(), "package.json");
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
-  const cosmosModules: { [moduleName: string]: string } =
-    packageJson.cosmosModules;
 
-  purge(Object.keys(cosmosModules));
+  purge([...packageJson.cosmosModules['cosmos-sdk'], ...packageJson.cosmosModules['atomone']]);
 
-  for (let moduleName of Object.keys(cosmosModules)) {
-    const cosmosFiles = await getFilesForPath("cosmossdk", moduleName);
-    const atomOneFiles = await getFilesForPath("atomone", moduleName);
-    await updateFiles(moduleName, cosmosFiles);
-    await updateFiles(moduleName, atomOneFiles); // This overwrites the cosmossdk files if present
+  for (let repoName of ['cosmos-sdk', 'atomone']) {
+    for (let moduleName of packageJson.cosmosModules[repoName]) {
+      const files = await getFilesForPath(repoName, moduleName);
+      if (files.length <= 0) {
+        console.log(`Skipping Module ${moduleName}, no docs found.`);
+        continue;
+      }
+
+      await updateFiles(moduleName, files);
+    }
   }
 
   console.log('Moved all files, and overwrote cosmos-sdk docs with atomone docs');

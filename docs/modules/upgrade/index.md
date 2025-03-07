@@ -8,7 +8,7 @@ sidebar_position: 1
 
 `x/upgrade` is an implementation of a Cosmos SDK module that facilitates smoothly
 upgrading a live Cosmos chain to a new (breaking) software version. It accomplishes this by
-providing a `PreBlocker` hook that prevents the blockchain state machine from
+providing a `BeginBlocker` hook that prevents the blockchain state machine from
 proceeding once a pre-defined upgrade block height has been reached.
 
 The module does not prescribe anything regarding how governance decides to do an
@@ -41,6 +41,12 @@ may contain various metadata about the upgrade, typically application specific
 upgrade info to be included on-chain such as a git commit that validators could
 automatically upgrade to.
 
+#### Sidecar Process
+
+If an operator running the application binary also runs a sidecar process to assist
+in the automatic download and upgrade of a binary, the `Info` allows this process to
+be seamless. This tool is [Cosmovisor](https://github.com/cosmos/cosmos-sdk/tree/main/tools/cosmovisor#readme).
+
 ```go
 type Plan struct {
   Name   string
@@ -48,12 +54,6 @@ type Plan struct {
   Info   string
 }
 ```
-
-#### Sidecar Process
-
-If an operator running the application binary also runs a sidecar process to assist
-in the automatic download and upgrade of a binary, the `Info` allows this process to
-be seamless. This tool is [Cosmovisor](https://github.com/cosmos/cosmos-sdk/tree/main/tools/cosmovisor#readme).
 
 ### Handler
 
@@ -91,11 +91,8 @@ If there's a planned upgrade and the upgrade height is reached, the old binary w
 
 This information is critical to ensure the `StoreUpgrades` happens smoothly at correct height and
 expected upgrade. It eliminiates the chances for the new binary to execute `StoreUpgrades` multiple
-times every time on restart. Also if there are multiple upgrades planned on same height, the `Name`
+times everytime on restart. Also if there are multiple upgrades planned on same height, the `Name`
 will ensure these `StoreUpgrades` takes place only in planned upgrade handler.
-
-**Note:** The `StoreLoader` helper function for StoreUpgrades in v2 is not part of the `x/upgrade` module; 
-instead, you can find it in the runtime v2 module.
 
 ### Proposal
 
@@ -106,7 +103,7 @@ the `Plan`, which targets a specific `Handler`, is persisted and scheduled. The
 upgrade can be delayed or hastened by updating the `Plan.Height` in a new proposal.
 
 ```protobuf reference
-https://github.com/cosmos/cosmos-sdk/blob/v0.52.0-beta.1/x/upgrade/proto/cosmos/upgrade/v1beta1/tx.proto#L29-L40
+https://github.com/cosmos/cosmos-sdk/blob/v0.47.0-rc1/proto/cosmos/upgrade/v1beta1/tx.proto#L29-L41
 ```
 
 #### Cancelling Upgrade Proposals
@@ -118,7 +115,7 @@ Of course this requires that the upgrade was known to be a bad idea well before 
 upgrade itself, to allow time for a vote.
 
 ```protobuf reference
-https://github.com/cosmos/cosmos-sdk/blob/v0.52.0-beta.1/x/upgrade/proto/cosmos/upgrade/v1beta1/tx.proto#L47-L55
+https://github.com/cosmos/cosmos-sdk/blob/v0.47.0-rc1/proto/cosmos/upgrade/v1beta1/tx.proto#L48-L57
 ```
 
 If such a possibility is desired, the upgrade height is to be
@@ -249,6 +246,10 @@ module_versions:
   version: "1"
 - name: bank
   version: "2"
+- name: capability
+  version: "1"
+- name: crisis
+  version: "1"
 - name: distribution
   version: "2"
 - name: evidence
@@ -313,45 +314,6 @@ info: ""
 name: test-upgrade
 time: "0001-01-01T00:00:00Z"
 upgraded_client_state: null
-```
-
-##### authority
-
-The `authority` command allows users to query the address that is authorized to submit upgrade proposals.
-
-```bash
-simd query upgrade authority [flags]
-```
-
-This command returns the bech32-encoded address of the account that has the authority to submit upgrade proposals.
-
-Example:
-
-```bash
-simd query upgrade authority
-```
-
-Example Output:
-
-```bash
-cosmos10d07y265gmmuvt4z0w9aw880jnsr700j6zn9kn
-```
-
-#### Transactions
-
-The upgrade module supports the following transactions:
-
-* `software-proposal` - submits an upgrade proposal:
-
-```bash
-simd tx upgrade software-upgrade v2 --title="Test Proposal" --summary="testing" --deposit="100000000stake" --upgrade-height 1000000 \
---upgrade-info '{ "binaries": { "linux/amd64":"https://example.com/simd.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f" } }' --from cosmos1..
-```
-
-* `cancel-upgrade-proposal` - cancels a previously submitted upgrade proposal:
-
-```bash
-simd tx upgrade cancel-upgrade-proposal --title="Test Proposal" --summary="testing" --deposit="100000000stake" --from cosmos1..
 ```
 
 ### REST
@@ -434,6 +396,14 @@ Example Output:
       "version": "2"
     },
     {
+      "name": "capability",
+      "version": "1"
+    },
+    {
+      "name": "crisis",
+      "version": "1"
+    },
+    {
       "name": "distribution",
       "version": "2"
     },
@@ -486,28 +456,6 @@ Example Output:
       "version": "1"
     }
   ]
-}
-```
-
-#### Authority
-
-`Authority` queries the address that is authorized to submit upgrade proposals.
-
-```bash
-/cosmos/upgrade/v1beta1/authority
-```
-
-Example:
-
-```bash
-curl -X GET "http://localhost:1317/cosmos/upgrade/v1beta1/authority" -H "accept: application/json"
-```
-
-Example Output:
-
-```json
-{
-"address": "cosmos10d07y265gmmuvt4z0w9aw880jnsr700j6zn9kn"
 }
 ```
 
@@ -551,7 +499,7 @@ cosmos.upgrade.v1beta1.Query/CurrentPlan
 Example:
 
 ```bash
-grpcurl -plaintext localhost:9090 cosmos.upgrade.v1beta1.Query/CurrentPlan
+grpcurl -plaintext localhost:9090 cosmos.slashing.v1beta1.Query/CurrentPlan
 ```
 
 Example Output:
@@ -573,7 +521,7 @@ cosmos.upgrade.v1beta1.Query/ModuleVersions
 Example:
 
 ```bash
-grpcurl -plaintext localhost:9090 cosmos.upgrade.v1beta1.Query/ModuleVersions
+grpcurl -plaintext localhost:9090 cosmos.slashing.v1beta1.Query/ModuleVersions
 ```
 
 Example Output:
@@ -592,6 +540,14 @@ Example Output:
     {
       "name": "bank",
       "version": "2"
+    },
+    {
+      "name": "capability",
+      "version": "1"
+    },
+    {
+      "name": "crisis",
+      "version": "1"
     },
     {
       "name": "distribution",
@@ -646,28 +602,6 @@ Example Output:
       "version": "1"
     }
   ]
-}
-```
-
-#### Authority
-
-`Authority` queries the address that is authorized to submit upgrade proposals.
-
-```bash
-cosmos.upgrade.v1beta1.Query/Authority
-```
-
-Example:
-
-```bash
-grpcurl -plaintext localhost:9090 cosmos.upgrade.v1beta1.Query/Authority
-```
-
-Example Output:
-
-```json
-{
-  "address": "cosmos10d07y265gmmuvt4z0w9aw880jnsr700j6zn9kn"
 }
 ```
 

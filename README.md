@@ -1,46 +1,50 @@
-# AtomOne Docs
+# 🚀 AtomOne Docs
 
-This documentation is a community effort which covers all things AtomOne.
+Welcome to **AtomOne Docs**! This is a **community-driven** effort to cover everything about AtomOne.
 
-## Requirements
+## 📋 Requirements
 
-- Grab the latest version of [golang](https://go.dev/) and install it.
-- Grab the latest version of [pnpm](https://pnpm.io/) and install it.
+Before you get started, make sure you have the latest versions of the following installed:
 
-## Installation
+- 🛠 [**golang**](https://go.dev/) - The programming language
+- 📦 [**pnpm**](https://pnpm.io/) - Fast and efficient package manager
 
-Install using [pnpm](https://pnpm.io/) and then move on from there.
+## ⚡ Installation
+
+Get started by installing dependencies with **pnpm**:
 
 ```sh
 pnpm install
 ```
 
-## Development
+## 🛠 Development
+
+Run the development server:
 
 ```sh
 pnpm dev
 ```
 
-## Build
+## 📦 Build
+
+Build the project for production:
 
 ```sh
 pnpm build
 ```
 
-## Updating Documentation Versions
+## 🔄 Updating Documentation Versions
 
-We pull some of our docs from older versions of `cosmos-sdk`.
-
-In order to do this, simply run the command below and it will pull the files down and update and distribute them accordingly.
+Some of our docs are pulled from older versions of **cosmos-sdk**. To update them, simply run:
 
 ```sh
 pnpm docs:update
 ```
 
-The command does the following:
+### 🔍 What This Command Does:
 
-1. Grabs the `cosmos sdk version` from the `go.mod` file in the `atomone` repository
-2. Grabs the latest `atomone` repository
-3. Grabs the `cosmos/cosmos-sdk` repository, and flips branch to `cosmos sdk version` extract from step 1
-4. Runs a `go` script to collect all the cosmos modules enabled, places them in the `package.json`
-5. Moves all files from both repositories, and aggregates them to create fully automated module documentation.
+1. Extracts the `cosmos-sdk` version from the `go.mod` file in the `atomone` repository.
+2. Fetches the latest `atomone` repository.
+3. Clones the `cosmos/cosmos-sdk` repository and switches to the extracted version.
+4. Executes a `Go` script to collect enabled Cosmos modules and updates `package.json`.
+5. Aggregates all necessary files to generate **fully automated** module documentation. 📖✨

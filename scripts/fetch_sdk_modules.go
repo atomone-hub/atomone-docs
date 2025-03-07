@@ -66,8 +66,8 @@ func fetchSDKModules(srcFile string) ([]string, error) {
 	for _, modName := range modNames {
 		for _, imp := range f.Imports {
 			path := imp.Path.Value
-			path = path[1 : len(path)-1]              // remove quotes
-			path = strings.TrimSuffix(path, "module") // remove potential extra module path
+			path = path[1 : len(path)-1]               // remove quotes
+			path = strings.TrimSuffix(path, "/module") // remove potential extra module path
 			impName := filepath.Base(path)
 			if imp.Name != nil {
 				// import use an alias

@@ -6,7 +6,7 @@
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
-    "docs:update": "tsx ./scripts/updateInfo.ts && tsx ./scripts/cloneRepos.ts && tsx ./scripts/moveRepoFiles.ts"
+    "docs:update": "tsx ./scripts/ts/cloneRepos.ts && tsx ./scripts/ts/fetchSdkModules.ts && tsx ./scripts/ts/moveRepoFiles.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,30 +22,28 @@
     "tsx": "^4.19.3",
     "vue": "^3.5.13"
   },
-  "docs": {
-    "modules": []
-  },
   "cosmosModules": {
-    "auth": "4",
-    "authz": "2",
-    "bank": "4",
-    "capability": "1",
-    "consensus": "1",
-    "crisis": "2",
-    "distribution": "3",
-    "evidence": "1",
-    "feegrant": "2",
-    "genutil": "1",
-    "gov": "4",
-    "ibc": "4",
-    "interchainaccounts": "2",
-    "mint": "2",
-    "params": "1",
-    "slashing": "3",
-    "staking": "4",
-    "transfer": "3",
-    "upgrade": "2",
-    "vesting": "1"
-  },
-  "cosmosSdkVersion": "0.37.15"
+    "cosmos-sdk": [
+      "auth",
+      "authz",
+      "bank",
+      "capability",
+      "consensus",
+      "crisis",
+      "distribution",
+      "evidence",
+      "feegrant",
+      "genutil",
+      "mint",
+      "params",
+      "slashing",
+      "staking",
+      "upgrade",
+      "auth/vesting"
+    ],
+    "atomone": [
+      "gov",
+      "photon"
+    ]
+  }
 }

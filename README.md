@@ -2,6 +2,11 @@
 
 This documentation is a community effort which covers all things AtomOne.
 
+## Requirements
+
+- Grab the latest version of [golang](https://go.dev/) and install it.
+- Grab the latest version of [pnpm](https://pnpm.io/) and install it.
+
 ## Installation
 
 Install using [pnpm](https://pnpm.io/) and then move on from there.
@@ -34,8 +39,8 @@ pnpm docs:update
 
 The command does the following:
 
-1. Updates the `cosmosSdkVersion` in `package.json`
-2. Updates the `cosmosModules` in `package.json`
-3. Pulls down `cosmos-sdk` by version.
-4. Grabs all markdown documentation for each given module type
-5. Distributes to predefined folder in the `scripts/distributeDocs.ts` file.
+1. Grabs the `cosmos sdk version` from the `go.mod` file in the `atomone` repository
+2. Grabs the latest `atomone` repository
+3. Grabs the `cosmos/cosmos-sdk` repository, and flips branch to `cosmos sdk version` extract from step 1
+4. Runs a `go` script to collect all the cosmos modules enabled, places them in the `package.json`
+5. Moves all files from both repositories, and aggregates them to create fully automated module documentation.

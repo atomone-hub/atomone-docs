@@ -4,7 +4,7 @@
     width: 100%;
     background: var(--vp-c-bg);
     border-top: 1px solid var(--vp-c-bg-alt);
-    z-index: 99;
+    z-index: 26;
     background: linear-gradient(to bottom, var(--vp-c-bg) 25%, #0f0e19);
 }
 

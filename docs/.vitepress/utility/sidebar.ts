@@ -1,15 +1,15 @@
-import fg from "fast-glob";
-import fs from "node:fs";
+import fg from 'fast-glob';
+import fs from 'node:fs';
 import matter from 'gray-matter';
 
 function getTitle(content: string): string | undefined {
-    const regex = /^#\s*(.+)$/m;  // Matches the first header after "# " (title)
+    const regex = /^#\s*(.+)$/m; // Matches the first header after "# " (title)
     const match = content.match(regex);
     if (!match) {
         return undefined;
     }
 
-    return match[1].replaceAll('`', '')
+    return match[1].replaceAll('`', '');
 }
 
 /**
@@ -19,16 +19,15 @@ function getTitle(content: string): string | undefined {
  *
  * @export
  * @param {string} baseDir
- * @return {*} 
+ * @return {*}
  */
 export function generateSidebar(baseDir: string) {
-    const files = fg.sync(`${baseDir}/**/*.md`, { ignore: ["node_modules"] });
-    
-    const formattedFiles: Array<{ text: string, link: string, order: number }> = [];
-    for(let file of files){
+    const files = fg.sync(`${baseDir}/**/*.md`, { ignore: ['node_modules', '**/versions/**'] });
+    const formattedFiles: Array<{ text: string; link: string; order: number }> = [];
+    for (let file of files) {
         file = file.replace(/\\/g, '/');
         const fileContent = fs.readFileSync(file, 'utf-8');
-        
+
         let fileTitle = getTitle(fileContent);
         if (!fileTitle) {
             const filePathSplit = file.split('/');
@@ -44,8 +43,7 @@ export function generateSidebar(baseDir: string) {
 
     formattedFiles.sort((a, b) => {
         return b.order - a.order;
-    })
+    });
 
     return formattedFiles;
 }
-  

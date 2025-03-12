@@ -52,5 +52,11 @@
       "gov",
       "photon"
     ]
+  },
+  "prettier": {
+    "tabWidth": 4,
+    "singleQuote": true,
+    "semi": true,
+    "printWidth": 120
   }
 }

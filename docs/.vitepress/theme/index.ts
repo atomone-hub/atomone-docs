@@ -1,10 +1,14 @@
 // https://vitepress.dev/guide/custom-theme
-import { h, ref } from 'vue'
+import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import FooterBottom from './FooterBottom.vue'
 import VersionSwitcher from './VersionSwitcher.vue'
+import VersionWrap from './VersionWrap.vue'
 import './style.css'
+import { createPinia } from 'pinia'
+
+const pinia = createPinia()
 
 export default {
   extends: DefaultTheme,
@@ -16,7 +20,7 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    const version = ref<string>("main");
-    app.provide('version', version);
+    app.use(pinia)
+    app.component('VersionWrap', VersionWrap);
   }
 } satisfies Theme

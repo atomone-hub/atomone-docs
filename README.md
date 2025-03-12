@@ -48,3 +48,19 @@ pnpm docs:update
 3. Clones the `cosmos/cosmos-sdk` repository and switches to the extracted version.
 4. Executes a `Go` script to collect enabled Cosmos modules and updates `package.json`.
 5. Aggregates all necessary files to generate **fully automated** module documentation. 📖✨
+
+## Custom Version Wrapping
+
+Part of the documentation has access to a version wrapper.
+
+The version wrapper allows for certain aspects of the documentation to show based on certain versions.
+
+```md
+<VersionWrap v="v1.0.0">
+This documentation will only show in v1.0.0!
+</VersionWrap>
+
+<VersionWrap v="v2.0.0">
+This documentation will only show in v2.0.0!
+</VersionWrap>
+```

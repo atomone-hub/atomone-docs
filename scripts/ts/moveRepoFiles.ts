@@ -40,6 +40,37 @@ function purge(modules: string[]) {
   }
 }
 
+async function getSdkVersion(branchOrTag = "main") {
+  let result: Response;
+  if (!branchOrTag.includes('v')) {
+    result = await fetch(`https://raw.githubusercontent.com/atomone-hub/atomone/refs/heads/${branchOrTag}/go.mod`);
+  } else {
+    result = await fetch(`https://raw.githubusercontent.com/atomone-hub/atomone/refs/tags/${branchOrTag}/go.mod`);
+  } 
+
+  if (!result.ok) {
+    console.error(`Failed to fetch go.mod file from GitHub`);
+    process.exit(1);
+  }
+
+  const data = await result.text();
+  for(let line of data.split('\n')) {
+    if (!line.includes("github.com/cosmos/cosmos-sdk")) {
+      continue;
+    }
+
+    const splitResults = line.trim().split(' ');
+    if (splitResults.length <= 1) {
+      continue;
+    }
+
+    return splitResults[1];
+  }
+
+  console.error(`Failed to extract version from go.mod file.`);
+  process.exit(1);
+}
+
 async function start() {
   const packageJsonPath = path.join(process.cwd(), "package.json");
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));

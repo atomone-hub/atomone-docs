@@ -1,17 +1,12 @@
 <script setup>
-import { inject, ref, onMounted, onBeforeUnmount, nextTick } from "vue";
+import { ref, onBeforeUnmount } from "vue";
+import { useVersionStore } from "./composables/useVersionStore";
 
-const version = inject("version");
 const modalOpen = ref(false);
-
-const storedVersion = localStorage.getItem("selectedVersion");
-if (storedVersion) {
-  version.value = storedVersion;
-}
+const versionStore = useVersionStore();
 
 function switchVersion(newVersion) {
-  version.value = newVersion;
-  localStorage.setItem("selectedVersion", newVersion);
+  versionStore.version = newVersion;
   modalOpen.value = false;
   document.removeEventListener("click", handleClickOutside);
 }
@@ -41,15 +36,13 @@ onBeforeUnmount(() => {
   <div class="version-selector">
     <div class="divider"></div>
     <button class="dropdown-btn" @click="showModal">
-      {{ version }}
+      {{ versionStore.version }}
     </button>
     <div v-if="modalOpen" class="overlay">
       <div class="modal">
         <h2>Select Version</h2>
         <div class="version-options">
-          <div @click="switchVersion('main')" class="dropdown-item">main</div>
-          <div @click="switchVersion('v1.0')" class="dropdown-item">v1.0</div>
-          <div @click="switchVersion('v2.0')" class="dropdown-item">v2.0</div>
+          <div class="dropdown-item" v-for="(version, index) in versionStore.versions" :key="index" @click="switchVersion(version)">{{ version }}</div>
         </div>
       </div>
     </div>
@@ -126,7 +119,6 @@ onBeforeUnmount(() => {
   padding: 8px 8px;
   cursor: pointer;
   font-weight: 600;
-  background-color: var(--vp-c-bg);
   border: none;
   border-radius: 4px;
   transition: opacity 0.3s ease;

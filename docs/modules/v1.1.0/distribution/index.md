@@ -676,7 +676,7 @@ rewards:
 
 The `validator-distribution-info` command allows users to query validator commission and self-delegation rewards for validator.
 
-````shell
+```shell
 simd query distribution validator-distribution-info cosmosvaloper1...
 ```
 

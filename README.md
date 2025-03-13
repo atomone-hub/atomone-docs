@@ -49,18 +49,22 @@ pnpm docs:update
 4. Executes a `Go` script to collect enabled Cosmos modules and updates `package.json`.
 5. Aggregates all necessary files to generate **fully automated** module documentation. 📖✨
 
-## Custom Version Wrapping
+## Updating Versions
 
-Part of the documentation has access to a version wrapper.
+If you need to show new versions, head on into `package.json` and find the `repoTags` section.
 
-The version wrapper allows for certain aspects of the documentation to show based on certain versions.
+Update which versions you want to display based on the [AtomOne Repository](https://github.com/atomone-hub/atomone).
 
-```md
-<VersionWrap v="v1.0.0">
-This documentation will only show in v1.0.0!
-</VersionWrap>
+**Example**
 
-<VersionWrap v="v2.0.0">
-This documentation will only show in v2.0.0!
-</VersionWrap>
 ```
+  "repoTags": [
+    "v2.0.0-alpha.3",
+    "v2.0.0-alpha.2",
+    "v2.0.0-alpha.1",
+    "v1.1.1",
+    "v1.1.0"
+  ],
+```
+
+Everything else will update after you run `pnpm docs:update`.

@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress';
 import { generateSidebar } from './utility/sidebar';
+import packageJson from '../../package.json';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -31,12 +32,12 @@ export default defineConfig({
             { text: 'Home', link: '/' },
             { text: 'Getting Started', link: '/getting-started' },
             { text: 'Architecture', link: '/architecture' },
-            { text: 'Modules', link: '/modules' },
+            { text: 'Modules', items: getModuleNavbar() },
         ],
         sidebar: {
             '/getting-started': generateSidebar('docs/getting-started'),
             '/architecture': generateSidebar('docs/architecture'),
-            '/modules': generateSidebar('docs/modules'),
+            ...getModuleSidebar()
         },
         socialLinks: [
             { icon: 'x', link: 'https://x.com/_atomone' },
@@ -48,3 +49,22 @@ export default defineConfig({
         logo: '/logo.svg',
     },
 });
+
+function getModuleSidebar() {
+    const tags = {};
+    for(let tag of packageJson.repoTags) {
+        tags[`/modules/${tag}`] = [ { text: tag, items: generateSidebar(`docs/modules/${tag}`) } ];
+    }
+
+    return tags;
+}
+
+function getModuleNavbar() {
+    const links: { text: string, link: string }[] = [];
+    for(let tag of packageJson.repoTags) {
+        const modulePath = `/modules/${tag}`
+        links.push({ text: tag, link: modulePath });
+    }
+
+    return links;
+}

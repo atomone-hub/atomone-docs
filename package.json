@@ -1,19 +1,15 @@
 {
   "name": "atomone-docs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Documentation for the AtomOne chain",
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
     "docs:update": "tsx ./scripts/ts/cloneRepos.ts && tsx ./scripts/ts/fetchSdkModules.ts && tsx ./scripts/ts/moveRepoFiles.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "gray-matter": "^4.0.3",
-    "pinia": "^3.0.1",
     "vitepress": "^1.6.3"
   },
   "devDependencies": {
@@ -23,6 +19,12 @@
     "tsx": "^4.19.3",
     "vue": "^3.5.13"
   },
+  "prettier": {
+    "tabWidth": 4,
+    "singleQuote": true,
+    "semi": true,
+    "printWidth": 120
+  },
   "repoTags": [
     "v2.0.0-alpha.2",
     "v2.0.0-alpha.1",
@@ -30,33 +32,95 @@
     "v1.1.0"
   ],
   "cosmosModules": {
-    "cosmos-sdk": [
-      "auth",
-      "authz",
-      "bank",
-      "capability",
-      "consensus",
-      "crisis",
-      "distribution",
-      "evidence",
-      "feegrant",
-      "genutil",
-      "mint",
-      "params",
-      "slashing",
-      "staking",
-      "upgrade",
-      "auth/vesting"
-    ],
-    "atomone": [
-      "gov",
-      "photon"
-    ]
-  },
-  "prettier": {
-    "tabWidth": 4,
-    "singleQuote": true,
-    "semi": true,
-    "printWidth": 120
+    "cosmos-sdk": {
+      "v2.0.0-alpha.2": [
+        "auth",
+        "authz",
+        "bank",
+        "capability",
+        "consensus",
+        "crisis",
+        "distribution",
+        "evidence",
+        "feegrant",
+        "genutil",
+        "mint",
+        "params",
+        "slashing",
+        "staking",
+        "upgrade",
+        "auth/vesting"
+      ],
+      "v2.0.0-alpha.1": [
+        "auth",
+        "authz",
+        "bank",
+        "capability",
+        "consensus",
+        "crisis",
+        "distribution",
+        "evidence",
+        "feegrant",
+        "genutil",
+        "mint",
+        "params",
+        "slashing",
+        "staking",
+        "upgrade",
+        "auth/vesting"
+      ],
+      "v1.1.1": [
+        "auth",
+        "authz",
+        "bank",
+        "capability",
+        "consensus",
+        "crisis",
+        "distribution",
+        "evidence",
+        "feegrant",
+        "genutil",
+        "mint",
+        "params",
+        "slashing",
+        "staking",
+        "upgrade",
+        "auth/vesting"
+      ],
+      "v1.1.0": [
+        "auth",
+        "authz",
+        "bank",
+        "capability",
+        "consensus",
+        "crisis",
+        "distribution",
+        "evidence",
+        "feegrant",
+        "genutil",
+        "mint",
+        "params",
+        "slashing",
+        "staking",
+        "upgrade",
+        "auth/vesting"
+      ]
+    },
+    "atomone": {
+      "v2.0.0-alpha.2": [
+        "gov",
+        "photon"
+      ],
+      "v2.0.0-alpha.1": [
+        "gov",
+        "photon"
+      ],
+      "v1.1.1": [
+        "gov"
+      ],
+      "v1.1.0": [
+        "gov"
+      ]
+    }
   }
 }

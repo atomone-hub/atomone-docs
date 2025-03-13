@@ -8,16 +8,6 @@ hero:
   image:
     src: /logo.svg
     alt: AtomOne Logo
-  actions:
-    - theme: "alt"
-      text: "Getting Started"
-      link: "/getting-started"
-    - theme: "alt"
-      text: "GOV Module"
-      link: "/modules/gov"
-    - theme: "alt"
-      text: "PHOTON Module"
-      link: "/modules/photon"
 
 features:
   - title: 🔨 Get Started &#8599;

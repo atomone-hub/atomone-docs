@@ -29,14 +29,6 @@ function cleanupVersionFile(filePath: string) {
   const fileContent = fs.readFileSync(filePath.replace(/\\/gm, '/'), 'utf-8');
   const splitFileContent = fileContent.split('\n');
 
-  // Start - Handle Header Removal
-  while(!splitFileContent[0].includes('# ')) {
-    splitFileContent.shift();
-  }
-
-  splitFileContent.shift();
-  // End - Handle Header Removal
-
   // Fixes `4` tick bug with some documents
   for(let i = 0; i < splitFileContent.length; i++) {
     if (splitFileContent[i].includes('````')) {
@@ -60,6 +52,10 @@ function cleanupVersionFile(filePath: string) {
  * @param {string} version
  */
 async function updateFiles(moduleName: string, markdownFiles: string[], version: string) {
+    if (!fs.existsSync(`${MODULES_DOCS_PATH}/${version}/${moduleName}`)) {
+        fs.mkdirSync(`${MODULES_DOCS_PATH}/${version}/${moduleName}`, { recursive: true });
+    }
+
     for (let filePath of markdownFiles) {
         let fileBaseName = path.basename(filePath);
         if (fileBaseName.toLowerCase().includes('changelog')) {
@@ -70,34 +66,7 @@ async function updateFiles(moduleName: string, markdownFiles: string[], version:
             fileBaseName = 'index.md';
         }
 
-        // fs.mkdirSync(`${MODULES_DOCS_PATH}/${moduleName}/versions`, {
-        //     recursive: true,
-        // });
-
-        // fs.writeFileSync(
-        //     `${MODULES_DOCS_PATH}/${moduleName}/versions/${fileBaseName.replace('.md', '')}-${version}.md`,
-        //     cleanupVersionFile(filePath)
-        // );
-
-        if (!fs.existsSync(`${MODULES_DOCS_PATH}/${moduleName}/${fileBaseName}`)) {
-          fs.appendFileSync(`${MODULES_DOCS_PATH}/${moduleName}/${fileBaseName}`, `# x/\`${moduleName}\` \r\n`)
-        }
-
-        let mainFile =
-            `\n<VersionWrap v="${version}">\r\n` +
-            cleanupVersionFile(filePath) +
-            `\r\n</VersionWrap>\r\n`;
-        fs.appendFileSync(`${MODULES_DOCS_PATH}/${moduleName}/${fileBaseName}`, mainFile);
-    }
-}
-
-function purge(modules: string[]) {
-    for (const moduleName of modules) {
-        fs.rmSync(`${MODULES_DOCS_PATH}/${moduleName}`, {
-            force: true,
-            recursive: true,
-        });
-        fs.mkdirSync(`${MODULES_DOCS_PATH}/${moduleName}`, { recursive: true });
+        fs.writeFileSync(`${MODULES_DOCS_PATH}/${version}/${moduleName}/${fileBaseName}`, cleanupVersionFile(filePath));
     }
 }
 
@@ -146,17 +115,32 @@ async function start() {
     const packageJsonPath = path.join(process.cwd(), 'package.json');
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 
-    purge([...packageJson.cosmosModules['cosmos-sdk'], ...packageJson.cosmosModules['atomone']]);
+
 
     for (let version of packageJson.repoTags) {
+        fs.rmSync(`${MODULES_DOCS_PATH}/${version}`, {
+            force: true,
+            recursive: true,
+        });
+
+        if (!fs.existsSync(`${MODULES_DOCS_PATH}/${version}`)) {
+            fs.mkdirSync(`${MODULES_DOCS_PATH}/${version}`, { recursive: true });
+            fs.cpSync(`${MODULES_DOCS_PATH}/index.md`, `${MODULES_DOCS_PATH}/${version}/index.md`, { force: true });
+        }
+
         const sdkVersion = await getSdkVersion(version);
         execSync(`git checkout ${sdkVersion}`, {
             cwd: process.cwd() + `/cosmos-sdk`,
             encoding: 'utf-8',
         });
 
+        execSync(`git checkout ${version}`, {
+            cwd: process.cwd() + `/atomone`,
+            encoding: 'utf-8',
+        });
+
         for (let repoName of ['cosmos-sdk', 'atomone']) {
-            for (let moduleName of packageJson.cosmosModules[repoName]) {
+            for (let moduleName of packageJson.cosmosModules[repoName][version]) {
                 const files = await getFilesForPath(repoName, moduleName);
                 if (files.length <= 0) {
                     console.log(`Skipping Module ${moduleName}, no docs found.`);

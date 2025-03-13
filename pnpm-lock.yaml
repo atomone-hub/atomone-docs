@@ -11,9 +11,6 @@ importers:
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
-      pinia:
-        specifier: ^3.0.1
-        version: 3.0.1(vue@3.5.13)
       vitepress:
         specifier: ^1.6.3
         version: 1.6.3(@algolia/client-search@5.20.3)(@types/node@22.13.5)(markdown-it-mathjax3@4.3.2)(postcss@8.5.3)(search-insights@2.17.3)
@@ -1001,15 +998,6 @@ packages:
   picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
-
-  pinia@3.0.1:
-    resolution: {integrity: sha512-WXglsDzztOTH6IfcJ99ltYZin2mY8XZCXujkYWVIJlBjqsP6ST7zw+Aarh63E1cDVYeyUcPCxPHzJpEOmzB6Wg==}
-    peerDependencies:
-      typescript: '>=4.4.4'
-      vue: ^2.7.0 || ^3.5.11
-    peerDependenciesMeta:
-      typescript:
-        optional: true
 
   postcss@8.5.3:
     resolution: {integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==}
@@ -2125,11 +2113,6 @@ snapshots:
   picocolors@1.1.1: {}
 
   picomatch@2.3.1: {}
-
-  pinia@3.0.1(vue@3.5.13):
-    dependencies:
-      '@vue/devtools-api': 7.7.2
-      vue: 3.5.13
 
   postcss@8.5.3:
     dependencies:

@@ -5,8 +5,6 @@ order: 99
 
 # Engage with the AtomOne Community
 
-Start by learning how you can contribute to AtomOne. Check out this simple guide on how to begin building with AtomOne.
-
 ## 1. Participate in Discussions
 
 Atom.One is a community-driven ecosystem, and your voice matters. Join the conversation, ask questions, and share your thoughts on:

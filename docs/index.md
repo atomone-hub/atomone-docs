@@ -11,7 +11,7 @@ hero:
 
 features:
   - title: 🔨 Get Started &#8599;
-    details: "Start by learning how you can contribute to AtomOne. Check out our simple guide on how to begin building with AtomOne."
+    details: "Start by learning how you can contribute to AtomOne. Check out this simple guide on how to begin building with AtomOne."
     link: "/getting-started"
   - title: ⚡ Contribute &#8599;
     details: "Contribute to our open source code and discussions on GitHub where we discuss dozens of issues."

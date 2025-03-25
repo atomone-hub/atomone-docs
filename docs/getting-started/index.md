@@ -5,6 +5,8 @@ order: 99
 
 # Engage with the AtomOne Community
 
+Start by learning how you can contribute to AtomOne. Check out this simple guide on how to begin building with AtomOne.
+
 ## 1. Participate in Discussions
 
 Atom.One is a community-driven ecosystem, and your voice matters. Join the conversation, ask questions, and share your thoughts on:
@@ -18,7 +20,7 @@ Atom.One is a community-driven ecosystem, and your voice matters. Join the conve
 AtomOne’s decisions are made through decentralized governance, and your participation helps shape the future of the ecosystem. Get involved by:
 
 - Checking out the [governance page](https://gov.atom.one/) – Stay informed on proposals and upcoming votes.
-- Voting on key decisions – Cast your vote on protocol upgrades, funding allocations, and community initiatives.
+- Voting on key decisions – Cast your vote on protocol upgrades, new proposed  modules/ implementations and other community initiatives
 - Joining governance discussions – Share your perspectives on the forum, Discord, Twitter, and Reddit.
 
 
@@ -28,11 +30,11 @@ AtomOne is built with open-source technologies, and there are many opportunities
 
 - [AtomOne Hub](https://github.com/atomone-hub) is where all of our community’s current efforts are placed.
 
-## 3. Build Decentralized Applications
+## 4. Build Decentralized Applications
 
 The AtomOne ecosystem welcomes decentralized applications (dApps) to leverage its blockchain interoperability and secure infrastructure. As a developer, you can create applications that interact with the AtomOne blockchain, either as a consumer or a validator.
 
-## 4. Documentation and Writing
+## 5. Documentation and Writing
 
 Not all contributions are code-related! Writing clear, comprehensive documentation, tutorials, and guides is crucial to make AtomOne more accessible to new users and developers.
 

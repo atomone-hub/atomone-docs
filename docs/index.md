@@ -19,5 +19,8 @@ features:
   - title: 💬 Discuss &#8599;
     details: "Shape the future of AtomOne by discussing governance, token mechanics, chain security, and anything you desire."
     link: 'https://discord.com/invite/atomone'
+  - title: ⚙️  Node Guide &#8599;
+    details: "Learn how to set up, manage, and optimize nodes within the AtomOne network."
+    link: '/node'
 ---
 

@@ -31,12 +31,14 @@ export default defineConfig({
         nav: [
             { text: 'Home', link: '/' },
             { text: 'Getting Started', link: '/getting-started' },
+            { text: 'Node Setup', link: '/node' },
             { text: 'Architecture', link: '/architecture' },
             { text: 'Modules', items: getModuleNavbar() },
         ],
         sidebar: {
             '/getting-started': generateSidebar('docs/getting-started'),
             '/architecture': generateSidebar('docs/architecture'),
+            '/node': generateSidebar('docs/node'),
             ...getModuleSidebar()
         },
         socialLinks: [

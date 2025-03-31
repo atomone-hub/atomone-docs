@@ -1,4 +1,4 @@
-# 🔧 Useful Commands for AtomOne Node
+# Useful Commands for AtomOne Node
 > Here are some essential commands to help you manage your AtomOne node efficiently
 
 ## 🔑 Key management

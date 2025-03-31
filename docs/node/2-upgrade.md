@@ -1,4 +1,4 @@
-# ⬆️  Atomone Upgrade Instructions
+# Atomone Upgrade Instructions
 
 This document outlines the steps to upgrade your Atomone node. By using Cosmovisor, you can easily manage upgrades by simply building the new binaries and placing them in the appropriate Cosmovisor upgrade directory.
 

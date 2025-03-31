@@ -90,11 +90,9 @@ atomoned init $MONIKER --chain-id atomone-1
 # Download genesis
 curl -Ls https://atomone.fra1.digitaloceanspaces.com/atomone-1/genesis.json > $HOME/.atomone/config/genesis.json
 
-# Add peers and seeds
-PEERS="6a5b68893b69da2b0672ee0f7fec9b76663fb144@82.113.25.144:26656,8772ddb3e4331f6404dc280c1bc5626099e227bc@65.21.234.111:15656,ca1d8ab2fdc1cbff4c8283ddbcc8fd53a7d9a254@65.21.215.167:26656,a31d85900f6562b3a8b275617359643a5607ed40@146.70.243.163:26656,acdc4b1e0aa756a70d4c1b52f094a7ffbda76186@81.17.97.74:26656,a05191b9ec3023be00e9584d5255f7dfcd3a167e@135.181.138.95:2110"
+# Add seeds
 SEEDS=$(curl -s https://chains.cosmos.directory/atomone | jq -r '[.chain.peers.seeds[] | .id + "@" + .address] | join(",")' )
-sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*seeds *=.*/seeds = \"$SEEDS\"/}" \
-       -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" $HOME/.atomone/config/config.toml
+sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*seeds *=.*/seeds = \"$SEEDS\"/}" $HOME/.atomone/config/config.toml
 
 # Set minimum gas price
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.025uatone\"|" $HOME/.atomone/config/app.toml

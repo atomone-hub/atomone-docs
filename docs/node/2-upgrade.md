@@ -1,11 +1,15 @@
+<<<<<<< HEAD
 # Atomone Upgrade Instructions
+=======
+# ⬆️  AtomOne Upgrade Instructions
+>>>>>>> 4a4ded86aaf5f6a066170b1f1d6ace893c77677d
 
-This document outlines the steps to upgrade your Atomone node. By using Cosmovisor, you can easily manage upgrades by simply building the new binaries and placing them in the appropriate Cosmovisor upgrade directory.
+This document outlines the steps to upgrade your AtomOne node. By using Cosmovisor, you can easily manage upgrades by simply building the new binaries and placing them in the appropriate Cosmovisor upgrade directory.
 
 ## Upgrade Steps
 
 ### 1. Clone the Project Repository
-First, clone the Atomone project repository to your machine by running the following commands:
+First, clone the AtomOne project repository to your machine by running the following commands:
 
 ```
 cd $HOME

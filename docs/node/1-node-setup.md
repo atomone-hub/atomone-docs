@@ -69,6 +69,7 @@ Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 [Install]
 WantedBy=multi-user.target
 EOF
+
 sudo systemctl daemon-reload
 sudo systemctl enable atomone.service
 ```

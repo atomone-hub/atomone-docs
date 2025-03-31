@@ -82,7 +82,7 @@ atomoned config set client node tcp://localhost:26657
 ```
 
 ## Initialize the node
-We will initialize the node, download the genesis file, configure the address book, and add some peer nodes to connect to the network.
+We will initialize the node, download the genesis file, and configure the network connection using seed nodes.
 ```
 # Initialize the node
 atomoned init $MONIKER --chain-id atomone-1

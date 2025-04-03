@@ -1,5 +1,4 @@
 <template>
-    <h3>APIs</h3>
     <div class="tabs">
         <button :class="{ active: activeTab === 'RPC' }" @click="activeTab = 'RPC'">RPC</button>
         <button :class="{ active: activeTab === 'REST' }" @click="activeTab = 'REST'">REST</button>

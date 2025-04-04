@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# AtomOne Chain Software
+# Chain Software
 
 AtomOne is built using the Cosmos SDK as a fork of the `Cosmos Hub` at version `v15.2.0` (common commit hash 7281c9b).
 

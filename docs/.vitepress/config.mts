@@ -17,9 +17,9 @@ export default defineConfig({
             golang: 'go',
         },
         // This fixes an issue with formatting in files
-        attrs: { 
-          disable: true 
-        }
+        attrs: {
+            disable: true,
+        },
     },
     themeConfig: {
         search: {
@@ -30,16 +30,25 @@ export default defineConfig({
         },
         nav: [
             { text: 'Home', link: '/' },
-            { text: 'Getting Started', link: '/getting-started' },
-            { text: 'Node Setup', link: '/node' },
-            { text: 'Architecture', link: '/architecture' },
-            { text: 'Modules', items: getModuleNavbar() },
+            { text: 'Guides', link: '/guides' },
+            { text: 'Modules', items: [...getModuleNavbar(), { text: 'Architecture', link: '/architecture' }] },
+            {
+                text: 'Validators',
+                items: [
+                    { text: 'Services', link: '/validators/services' },
+                    { text: 'Registry', link: '/validators/registry' },
+                ],
+            },
         ],
         sidebar: {
-            '/getting-started': generateSidebar('docs/getting-started'),
+            '/guides': [
+                ...generateSidebar('docs/guides', false),
+                { text: 'Nodes Guide', items: generateSidebar('docs/guides/node-guide'), collapsed: false },
+            ],
             '/architecture': generateSidebar('docs/architecture'),
             '/node': generateSidebar('docs/node'),
-            ...getModuleSidebar()
+            '/validators': generateSidebar('docs/validators'),
+            ...getModuleSidebar(),
         },
         socialLinks: [
             { icon: 'x', link: 'https://x.com/_atomone' },
@@ -54,17 +63,17 @@ export default defineConfig({
 
 function getModuleSidebar() {
     const tags = {};
-    for(let tag of packageJson.repoTags) {
-        tags[`/modules/${tag}`] = [ { text: tag, items: generateSidebar(`docs/modules/${tag}`) } ];
+    for (let tag of packageJson.repoTags) {
+        tags[`/modules/${tag}`] = [{ text: tag, items: generateSidebar(`docs/modules/${tag}`) }];
     }
 
     return tags;
 }
 
 function getModuleNavbar() {
-    const links: { text: string, link: string }[] = [];
-    for(let tag of packageJson.repoTags) {
-        const modulePath = `/modules/${tag}`
+    const links: { text: string; link: string }[] = [];
+    for (let tag of packageJson.repoTags) {
+        const modulePath = `/modules/${tag}`;
         links.push({ text: tag, link: modulePath });
     }
 

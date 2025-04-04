@@ -4,7 +4,7 @@ order: 99
 footer: true
 ---
 
-# Welcome to AtomOne Docs
+# Node Setup Overview
 
 Welcome to the official **AtomOne Documentation**! Whether you're a beginner looking to set up your first node or an advanced user exploring new features, you've come to the right place. This documentation is designed to guide you through every aspect of the AtomOne ecosystem, from installation and configuration to maintenance and upgrades.
 
@@ -18,7 +18,3 @@ Dive in and discover everything you need to fully leverage AtomOne's power and f
 - [Upgrade Instructions](2-upgrade.md) - Detailed guide for upgrading your AtomOne node.
 - [Useful Commands](3-useful-commands.md) - A collection of helpful commands to manage and monitor your AtomOne node.
 - [Validator Services](4-validator-services.md) - List of trusted validators and their service links.
-
-## APIs
-
-<ChainRegistry />

@@ -21,8 +21,11 @@ function getTitle(content: string): string | undefined {
  * @param {string} baseDir
  * @return {*}
  */
-export function generateSidebar(baseDir: string) {
-    const files = fg.sync(`${baseDir}/**/*.md`, { ignore: ['node_modules', '**/versions/**'] });
+export function generateSidebar(baseDir: string, fullDepth = true) {
+    const files = fg.sync(fullDepth ? `${baseDir}/**/*.md` : `${baseDir}/*.md`, {
+        ignore: ['node_modules', '**/versions/**'],
+    });
+
     const formattedFiles: Array<{ text: string; link: string; order: number }> = [];
     for (let file of files) {
         file = file.replace(/\\/g, '/');

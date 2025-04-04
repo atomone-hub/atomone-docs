@@ -3,7 +3,9 @@ outline: deep
 order: 99
 ---
 
-# Engage with the AtomOne Community
+# Getting Started
+
+Engage with the AtomOne community.
 
 ## 1. Participate in Discussions
 

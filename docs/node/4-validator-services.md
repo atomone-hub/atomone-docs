@@ -13,6 +13,7 @@ The table below provides details about each validator's service, including their
 | **[NODERS]**     | [https://noders.services/mainnet-networks/atomone](https://noders.services/mainnet-networks/atomone) |
 | **🔥STAVR🔥 REStake ON✅**     | [https://stavr-team.gitbook.io/nodes-guides/mainnets/atomone](https://stavr-team.gitbook.io/nodes-guides/mainnets/atomone) |
 | **owlstake🦉**     | [https://services.owlstake.com/docs/mainnet/atone/](https://services.owlstake.com/docs/mainnet/atone/) |
+| **Roomit**     | [https://stake.roomit.xyz/mainnet/tendermint-atomone/](https://stake.roomit.xyz/mainnet/tendermint-atomone/) |
 
 ## How to Add Your Validator Service
 

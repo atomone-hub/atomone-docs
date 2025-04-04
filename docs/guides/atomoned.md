@@ -19,7 +19,8 @@ The following modifications have been made to the Cosmos Hub software to create 
 
 - [Latest AtomOne Chain Releases](https://github.com/atomone-hub/atomone/releases/)
 - [Genesis Repository](https://github.com/atomone-hub/genesis)
-- [Explore Validators](https://github.com/atomone-hub/atomone-validator-community/pulls)
+- [Explore Validators](../validators/services.md)
+- [Explore APIs](../validators/registry.md)
 
 ## Basic Usage
 

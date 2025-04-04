@@ -14,7 +14,8 @@ Dive in and discover everything you need to fully leverage AtomOne's power and f
 
 ## 📚 Table of Contents
 
-- [Node Setup](1-node-setup.md) - Step-by-step guide to setting up your AtomOne node.
-- [Upgrade Instructions](2-upgrade.md) - Detailed guide for upgrading your AtomOne node.
-- [Useful Commands](3-useful-commands.md) - A collection of helpful commands to manage and monitor your AtomOne node.
-- [Validator Services](4-validator-services.md) - List of trusted validators and their service links.
+- [Node Setup](1-node-setup.md) - Step-by-step guide to setting up your AtomOne node
+- [Upgrade Instructions](2-upgrade.md) - Detailed guide for upgrading your AtomOne node
+- [Useful Commands](3-useful-commands.md) - A collection of helpful commands to manage and monitor your AtomOne node
+- [Validator Services](../../validators/services.md) - List of trusted validators and their service links
+- [Validator APIs](../../validators/registry.md) - List of validators and their publicly provided RPCs, APIs, and GRPCs

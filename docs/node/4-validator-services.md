@@ -12,6 +12,7 @@ The table below provides details about each validator's service, including their
 | **Silk Nodes**     | [https://silknodes.io/networks/atomone](https://silknodes.io/networks/atomone) |
 | **[NODERS]**     | [https://noders.services/mainnet-networks/atomone](https://noders.services/mainnet-networks/atomone) |
 | **🔥STAVR🔥 REStake ON✅**     | [https://stavr-team.gitbook.io/nodes-guides/mainnets/atomone](https://stavr-team.gitbook.io/nodes-guides/mainnets/atomone) |
+| **owlstake🦉**     | [https://services.owlstake.com/docs/mainnet/atone/](https://services.owlstake.com/docs/mainnet/atone/) |
 
 ## How to Add Your Validator Service
 

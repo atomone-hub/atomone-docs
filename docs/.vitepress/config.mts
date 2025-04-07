@@ -10,16 +10,19 @@ export default defineConfig({
     ignoreDeadLinks: true, // Leave this on because the inherited docs will create broken links
     cleanUrls: false,
     lastUpdated: false,
-    head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+    head: [
+        ['link', { rel: 'icon', href: '/favicon.ico' }],
+        ['script', { defer: '', 'data-domain': 'docs.atom.one', src: 'https://plausible.io/js/script.js' }],
+    ],
     markdown: {
         math: true,
         languageAlias: {
             golang: 'go',
         },
         // This fixes an issue with formatting in files
-        attrs: { 
-          disable: true 
-        }
+        attrs: {
+            disable: true,
+        },
     },
     themeConfig: {
         search: {
@@ -39,7 +42,7 @@ export default defineConfig({
             '/getting-started': generateSidebar('docs/getting-started'),
             '/architecture': generateSidebar('docs/architecture'),
             '/node': generateSidebar('docs/node'),
-            ...getModuleSidebar()
+            ...getModuleSidebar(),
         },
         socialLinks: [
             { icon: 'x', link: 'https://x.com/_atomone' },
@@ -54,17 +57,17 @@ export default defineConfig({
 
 function getModuleSidebar() {
     const tags = {};
-    for(let tag of packageJson.repoTags) {
-        tags[`/modules/${tag}`] = [ { text: tag, items: generateSidebar(`docs/modules/${tag}`) } ];
+    for (let tag of packageJson.repoTags) {
+        tags[`/modules/${tag}`] = [{ text: tag, items: generateSidebar(`docs/modules/${tag}`) }];
     }
 
     return tags;
 }
 
 function getModuleNavbar() {
-    const links: { text: string, link: string }[] = [];
-    for(let tag of packageJson.repoTags) {
-        const modulePath = `/modules/${tag}`
+    const links: { text: string; link: string }[] = [];
+    for (let tag of packageJson.repoTags) {
+        const modulePath = `/modules/${tag}`;
         links.push({ text: tag, link: modulePath });
     }
 

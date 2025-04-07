@@ -10,7 +10,10 @@ export default defineConfig({
     ignoreDeadLinks: true, // Leave this on because the inherited docs will create broken links
     cleanUrls: false,
     lastUpdated: false,
-    head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+    head: [
+        ['link', { rel: 'icon', href: '/favicon.ico' }],
+        ['script', { defer: '', 'data-domain': 'docs.atom.one', src: 'https://plausible.io/js/script.js' }],
+    ],
     markdown: {
         math: true,
         languageAlias: {

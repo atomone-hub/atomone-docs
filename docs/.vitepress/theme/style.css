@@ -197,6 +197,14 @@ body {
     border-right: 1px solid var(--vp-c-bg-soft);
 }
 
+.link .text {
+    color: var(--vp-c-brand-light) !important;
+}
+
+.is-active .text {
+    color: #fff !important;
+}
+
 .curtain {
     background-color: var(--vp-c-bg) !important;
 }

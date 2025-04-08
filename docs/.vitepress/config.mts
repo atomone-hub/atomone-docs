@@ -33,15 +33,24 @@ export default defineConfig({
         },
         nav: [
             { text: 'Home', link: '/' },
-            { text: 'Getting Started', link: '/getting-started' },
-            { text: 'Node Setup', link: '/node' },
-            { text: 'Architecture', link: '/architecture' },
-            { text: 'Modules', items: getModuleNavbar() },
+            { text: 'Guides', link: '/guides' },
+            { text: 'Modules', items: [...getModuleNavbar(), { text: 'Architecture', link: '/architecture' }] },
+            {
+                text: 'Validators',
+                items: [
+                    { text: 'Services', link: '/validators/services' },
+                    { text: 'Registry', link: '/validators/registry' },
+                ],
+            },
         ],
         sidebar: {
-            '/getting-started': generateSidebar('docs/getting-started'),
+            '/guides': [
+                ...generateSidebar('docs/guides', false),
+                { text: 'Nodes Guide', items: generateSidebar('docs/guides/node-guide'), collapsed: false },
+            ],
             '/architecture': generateSidebar('docs/architecture'),
             '/node': generateSidebar('docs/node'),
+            '/validators': generateSidebar('docs/validators'),
             ...getModuleSidebar(),
         },
         socialLinks: [

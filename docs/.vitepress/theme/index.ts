@@ -4,6 +4,7 @@ import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import FooterBottom from './FooterBottom.vue';
 import ChainRegistry from './components/ChainRegistry.vue';
+import ValidatorRegistry from './components/ValidatorRegistry.vue';
 import './style.css';
 
 export default {
@@ -16,5 +17,6 @@ export default {
     },
     enhanceApp({ app, router, siteData }) {
         app.component('ChainRegistry', ChainRegistry);
+        app.component('ValidatorRegistry', ValidatorRegistry);
     },
 } satisfies Theme;

@@ -26,13 +26,13 @@
     "printWidth": 120
   },
   "repoTags": [
-    "v2.0.0-rc1",
-    "v1.1.1",
-    "v1.1.0"
+    "v3.0.1",
+    "v2.1.0",
+    "v2.0.0"
   ],
   "cosmosModules": {
     "cosmos-sdk": {
-      "v2.0.0-rc1": [
+      "v3.0.1": [
         "auth",
         "authz",
         "bank",
@@ -49,13 +49,12 @@
         "upgrade",
         "auth/vesting"
       ],
-      "v1.1.1": [
+      "v2.1.0": [
         "auth",
         "authz",
         "bank",
         "capability",
         "consensus",
-        "crisis",
         "distribution",
         "evidence",
         "feegrant",
@@ -67,13 +66,12 @@
         "upgrade",
         "auth/vesting"
       ],
-      "v1.1.0": [
+      "v2.0.0": [
         "auth",
         "authz",
         "bank",
         "capability",
         "consensus",
-        "crisis",
         "distribution",
         "evidence",
         "feegrant",
@@ -87,15 +85,18 @@
       ]
     },
     "atomone": {
-      "v2.0.0-rc1": [
+      "v3.0.1": [
+        "dynamicfee",
         "gov",
         "photon"
       ],
-      "v1.1.1": [
-        "gov"
+      "v2.1.0": [
+        "gov",
+        "photon"
       ],
-      "v1.1.0": [
-        "gov"
+      "v2.0.0": [
+        "gov",
+        "photon"
       ]
     }
   }
